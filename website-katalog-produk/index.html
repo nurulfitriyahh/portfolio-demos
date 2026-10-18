@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forma — Product Catalog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#">forma<span>.</span></a>
+    <nav>
+      <a href="#home">Beranda</a>
+      <a href="#produk">Produk</a>
+      <a href="#tentang">Tentang</a>
+    </nav>
+    <button class="cart" onclick="lihatKeranjang()">
+      Keranjang <span id="cart-count">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <p class="eyebrow">KOLEKSI PILIHAN 2026</p>
+        <h1>Temukan produk<br>favoritmu.</h1>
+        <p class="sub">
+          Pilihan produk berkualitas dengan desain modern
+          untuk melengkapi kebutuhan sehari-hari.
+        </p>
+        <a class="primary-btn" href="#produk">Jelajahi Produk ↗</a>
+      </div>
+      <div class="hero-art">
+        <div class="art-circle"></div>
+        <div class="product-art">
+          <span>F</span>
+          <small>FORMA<br>COLLECTION</small>
+        </div>
+        <div class="art-label">SIMPLE. USEFUL. TIMELESS.</div>
+      </div>
+    </section>
+
+    <section class="catalog" id="produk">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PILIHAN UNTUKMU</p>
+          <h2>Katalog Produk</h2>
+        </div>
+        <p class="result-count" id="result-count">6 produk tersedia</p>
+      </div>
+
+      <div class="toolbar">
+        <input id="search" type="search"
+          placeholder="Cari nama produk..."
+          aria-label="Cari produk">
+        <select id="category" aria-label="Filter kategori">
+          <option value="Semua">Semua Kategori</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Aksesori">Aksesori</option>
+          <option value="Lifestyle">Lifestyle</option>
+        </select>
+        <select id="sort" aria-label="Urutkan produk">
+          <option value="default">Urutan Default</option>
+          <option value="low">Harga Terendah</option>
+          <option value="high">Harga Tertinggi</option>
+          <option value="name">Nama A–Z</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+      <p class="empty" id="empty" hidden>Produk tidak ditemukan.</p>
+    </section>
+
+    <section class="about" id="tentang">
+      <p class="eyebrow">TENTANG FORMA</p>
+      <h2>Produk sederhana,<br>pilihan lebih bermakna.</h2>
+      <p>
+        Forma adalah contoh website katalog produk yang membantu
+        pengunjung menjelajahi koleksi, mencari barang, dan melihat
+        informasi harga dalam satu halaman.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#">forma<span>.</span></a>
+    <p>© 2026 Forma Product Catalog · Demo Portofolio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

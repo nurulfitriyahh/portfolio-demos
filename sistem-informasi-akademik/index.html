@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo Sistem Informasi Akademik untuk pengelolaan data mahasiswa dan jadwal kuliah.">
+  <title>EduSpace — Sistem Informasi Akademik</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a href="#dashboard" class="brand">
+      <span class="brand-icon">E</span>
+      <span>EduSpace<small>ACADEMIC SYSTEM</small></span>
+    </a>
+
+    <p class="menu-label">MENU UTAMA</p>
+    <nav class="side-nav">
+      <a href="#dashboard" class="nav-link active" data-page="dashboard">
+        <span>▦</span> Dashboard
+      </a>
+      <a href="#mahasiswa" class="nav-link" data-page="mahasiswa">
+        <span>♙</span> Data Mahasiswa
+      </a>
+      <a href="#jadwal" class="nav-link" data-page="jadwal">
+        <span>▦</span> Jadwal Kuliah
+      </a>
+      <a href="#nilai" class="nav-link" data-page="nilai">
+        <span>▤</span> Nilai Akademik
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="help-card">
+        <span class="help-icon">?</span>
+        <strong>Butuh bantuan?</strong>
+        <p>Kelola informasi akademik dengan mudah.</p>
+        <a href="#bantuan" data-page="bantuan">Pusat bantuan ↗</a>
+      </div>
+      <div class="profile">
+        <div class="avatar">AD</div>
+        <div><strong>Administrator</strong><small>Admin Akademik</small></div>
+        <span class="profile-dots">•••</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content" id="dashboard">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+      <div class="breadcrumb">Pages <span>/</span> <strong id="breadcrumbTitle">Dashboard</strong></div>
+      <div class="topbar-right">
+        <span class="system-status"><i></i> Sistem aktif</span>
+        <button class="notification" id="notificationButton" aria-label="Notifikasi">♧<b></b></button>
+        <div class="top-avatar">AD</div>
+      </div>
+    </header>
+
+    <section class="page-content">
+      <div class="welcome-row">
+        <div>
+          <p class="eyebrow">ACADEMIC OVERVIEW / 2026</p>
+          <h1 id="pageTitle">Dashboard Akademik</h1>
+          <p class="subtitle" id="pageSubtitle">Pantau aktivitas akademik kampus dalam satu tempat.</p>
+        </div>
+        <div class="date-chip" id="todayDate">Tahun Akademik 2026/2027</div>
+      </div>
+
+      <div class="stat-grid" id="stats">
+        <article class="stat-card">
+          <div class="stat-top"><span>Total Mahasiswa</span><span class="stat-icon blue">♙</span></div>
+          <strong>2.845</strong>
+          <p><span class="positive">↑ 8,2%</span> dibanding semester lalu</p>
+          <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Dosen Aktif</span><span class="stat-icon purple">♧</span></div>
+          <strong>128</strong>
+          <p><span class="positive">↑ 3,4%</span> dibanding semester lalu</p>
+          <div class="mini-bars purple-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Mata Kuliah</span><span class="stat-icon orange">▤</span></div>
+          <strong>96</strong>
+          <p>Terdaftar semester ini</p>
+          <div class="mini-bars orange-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Rata-rata IPK</span><span class="stat-icon green">☆</span></div>
+          <strong>3,42</strong>
+          <p><span class="positive">↑ 0,12</span> dari semester lalu</p>
+          <div class="mini-bars green-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+      </div>
+
+      <div class="content-grid">
+        <section class="panel student-panel" id="mahasiswa">
+          <div class="panel-heading">
+            <div>
+              <h2>Data Mahasiswa</h2>
+              <p>Daftar mahasiswa terdaftar pada sistem.</p>
+            </div>
+            <button class="outline-button" id="exportButton">↓ Export CSV</button>
+          </div>
+
+          <div class="table-toolbar">
+            <label class="search-box">
+              <span>⌕</span>
+              <input id="searchInput" type="search" placeholder="Cari nama atau NIM..." aria-label="Cari mahasiswa">
+            </label>
+            <select id="facultyFilter" aria-label="Filter program studi">
+              <option value="all">Semua Prodi</option>
+              <option value="Sistem Informasi">Sistem Informasi</option>
+              <option value="Informatika">Informatika</option>
+              <option value="Manajemen">Manajemen</option>
+              <option value="Akuntansi">Akuntansi</option>
+            </select>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>MAHASISWA</th><th>NIM</th><th>PROGRAM STUDI</th><th>SEMESTER</th><th>STATUS</th></tr>
+              </thead>
+              <tbody id="studentTable"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state" hidden>Data mahasiswa tidak ditemukan.</div>
+          </div>
+          <div class="table-footer">
+            <span id="resultCount">Menampilkan 6 mahasiswa</span>
+            <span class="demo-label">DATA SIMULASI</span>
+          </div>
+        </section>
+
+        <section class="panel schedule-panel" id="jadwal">
+          <div class="panel-heading">
+            <div><h2>Jadwal Hari Ini</h2><p>Ringkasan jadwal perkuliahan.</p></div>
+            <span class="live-dot">● Live</span>
+          </div>
+          <div class="schedule-list">
+            <article class="schedule-item">
+              <div class="time">08:00<small>09:40</small></div>
+              <div class="schedule-detail">
+                <strong>Basis Data</strong>
+                <p>SI-301 · Ruang A201</p>
+                <span class="class-tag blue-tag">Sistem Informasi</span>
+              </div>
+            </article>
+            <article class="schedule-item">
+              <div class="time">10:00<small>11:40</small></div>
+              <div class="schedule-detail">
+                <strong>Pemrograman Web</strong>
+                <p>IF-202 · Lab Komputer 2</p>
+                <span class="class-tag purple-tag">Informatika</span>
+              </div>
+            </article>
+            <article class="schedule-item">
+              <div class="time">13:00<small>14:40</small></div>
+              <div class="schedule-detail">
+                <strong>Manajemen Keuangan</strong>
+                <p>MN-105 · Ruang B103</p>
+                <span class="class-tag orange-tag">Manajemen</span>
+              </div>
+            </article>
+          </div>
+          <button class="text-button" data-page="jadwal">Lihat semua jadwal →</button>
+        </section>
+      </div>
+
+      <section class="panel activity-panel" id="nilai">
+        <div class="panel-heading">
+          <div><h2>Ringkasan Akademik</h2><p>Distribusi performa akademik mahasiswa.</p></div>
+          <span class="semester-badge">Semester Ganjil 2026/2027</span>
+        </div>
+        <div class="academic-summary">
+          <div class="summary-number"><strong>3,42</strong><span>Rata-rata IPK keseluruhan</span></div>
+          <div class="grade-bars">
+            <div><span>IPK 3,50–4,00</span><div class="track"><i style="width:38%"></i></div><strong>38%</strong></div>
+            <div><span>IPK 3,00–3,49</span><div class="track"><i style="width:42%"></i></div><strong>42%</strong></div>
+            <div><span>IPK 2,50–2,99</span><div class="track"><i style="width:15%"></i></div><strong>15%</strong></div>
+            <div><span>IPK di bawah 2,50</span><div class="track"><i style="width:5%"></i></div><strong>5%</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 EduSpace Academic System</span>
+        <span>Portfolio Demo · Bukan sistem akademik sungguhan</span>
+      </footer>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

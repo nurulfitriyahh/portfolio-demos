@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdminPro — Dashboard E-Commerce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#">Admin<span>Pro.</span></a>
+
+    <p class="menu-label">MENU UTAMA</p>
+    <a class="nav-item active" href="#dashboard">▦ <span>Dashboard</span></a>
+    <a class="nav-item" href="#orders">▤ <span>Pesanan</span></a>
+    <a class="nav-item" href="#products">□ <span>Produk</span></a>
+    <a class="nav-item" href="#customers">♙ <span>Pelanggan</span></a>
+    <a class="nav-item" href="#reports">▥ <span>Laporan</span></a>
+
+    <div class="sidebar-bottom">
+      <div class="profile-avatar">IF</div>
+      <div class="profile-info">
+        <strong>Admin Toko</strong>
+        <small>Administrator</small>
+      </div>
+      <button class="logout" onclick="logoutDemo()" title="Keluar">↗</button>
+    </div>
+  </aside>
+
+  <main class="main" id="dashboard">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <div>
+          <h1>Dashboard</h1>
+          <p class="muted">Selamat datang kembali, Admin!</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="date" id="today"></span>
+        <div class="top-avatar">IF</div>
+      </div>
+    </header>
+
+    <section class="stats">
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Total Pendapatan</span>
+          <span class="stat-icon purple">Rp</span>
+        </div>
+        <h2>Rp 24.580.000</h2>
+        <p class="positive">↗ 12,8% <span>dari bulan lalu</span></p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Total Pesanan</span>
+          <span class="stat-icon blue">▤</span>
+        </div>
+        <h2>1.284</h2>
+        <p class="positive">↗ 8,2% <span>dari bulan lalu</span></p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Total Pelanggan</span>
+          <span class="stat-icon orange">♙</span>
+        </div>
+        <h2>856</h2>
+        <p class="positive">↗ 5,4% <span>dari bulan lalu</span></p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-top">
+          <span>Total Produk</span>
+          <span class="stat-icon green">□</span>
+        </div>
+        <h2 id="product-total">248</h2>
+        <p class="neutral">Produk terdaftar</p>
+      </article>
+    </section>
+
+    <section class="content-grid" id="reports">
+      <article class="panel chart-panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Statistik Penjualan</h3>
+            <p class="muted">Ringkasan penjualan mingguan</p>
+          </div>
+          <select id="period">
+            <option value="week">7 Hari Terakhir</option>
+            <option value="month">4 Minggu Terakhir</option>
+          </select>
+        </div>
+        <div class="chart-summary">
+          <strong id="chart-total">Rp 8.450.000</strong>
+          <span class="positive">↗ 10,5%</span>
+        </div>
+        <div class="chart" id="sales-chart" aria-label="Grafik penjualan"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Produk Terlaris</h3>
+            <p class="muted">Berdasarkan unit terjual</p>
+          </div>
+        </div>
+        <div class="best-list">
+          <div class="best-item">
+            <div class="product-thumb thumb-one">TS</div>
+            <div class="best-info"><strong>Basic T-Shirt</strong><small>Fashion</small></div>
+            <strong>284 <small>unit</small></strong>
+          </div>
+          <div class="best-item">
+            <div class="product-thumb thumb-two">BG</div>
+            <div class="best-info"><strong>Casual Bag</strong><small>Aksesori</small></div>
+            <strong>196 <small>unit</small></strong>
+          </div>
+          <div class="best-item">
+            <div class="product-thumb thumb-three">HD</div>
+            <div class="best-info"><strong>Hoodie Basic</strong><small>Fashion</small></div>
+            <strong>158 <small>unit</small></strong>
+          </div>
+          <div class="best-item">
+            <div class="product-thumb thumb-four">SN</div>
+            <div class="best-info"><strong>Daily Sneakers</strong><small>Sepatu</small></div>
+            <strong>121 <small>unit</small></strong>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel orders-panel" id="orders">
+      <div class="panel-heading orders-heading">
+        <div>
+          <h3>Pesanan Terbaru</h3>
+          <p class="muted">Pantau status pesanan pelanggan</p>
+        </div>
+        <div class="order-actions">
+          <input id="order-search" type="search" placeholder="Cari pesanan...">
+          <button class="outline-btn" onclick="exportCSV()">↓ Ekspor CSV</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID PESANAN</th>
+              <th>PELANGGAN</th>
+              <th>TANGGAL</th>
+              <th>TOTAL</th>
+              <th>STATUS</th>
+              <th>AKSI</th>
+            </tr>
+          </thead>
+          <tbody id="order-table"></tbody>
+        </table>
+      </div>
+      <p class="table-note" id="order-count"></p>
+    </section>
+
+    <section class="panel products-panel" id="products">
+      <div class="panel-heading">
+        <div>
+          <h3>Manajemen Produk</h3>
+          <p class="muted">Kelola daftar produk demo</p>
+        </div>
+        <button class="primary-btn" onclick="tambahProduk()">+ Tambah Produk</button>
+      </div>
+      <p class="product-notice">
+        Fitur tambah produk hanya berupa simulasi pada halaman ini.
+      </p>
+    </section>
+
+    <footer>© 2026 AdminPro Dashboard · Demo Portofolio</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

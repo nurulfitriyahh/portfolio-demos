@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="N2E Studio — koleksi fashion modern untuk gaya sehari-hari.">
+  <title>N2E Studio — Modern Fashion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="announcement">
+    FREE SHIPPING UNTUK PEMBELIAN DI ATAS Rp500.000
+  </div>
+
+  <header class="navbar">
+    <a href="#" class="logo">N2E<span>.</span></a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <button class="cart-button" id="openCart">
+      Bag <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">NEW COLLECTION / 2026</p>
+        <h1>Wear your<br>own <em>story.</em></h1>
+        <p class="hero-description">
+          Essential pieces, timeless silhouettes.
+          Temukan gaya yang paling mewakili dirimu.
+        </p>
+        <a href="#collection" class="button button-dark">
+          Explore Collection ↗
+        </a>
+        <div class="hero-note">DESIGNED FOR EVERYDAY LIVING.</div>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1100&q=85"
+          alt="Model mengenakan outfit fashion modern">
+        <span class="image-label">THE NEW ESSENTIALS — 01</span>
+      </div>
+    </section>
+
+    <section class="collection section" id="collection">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CURATED FOR YOU</p>
+          <h2>Latest <em>collection.</em></h2>
+        </div>
+        <p>Pieces that make a statement<br>without saying too much.</p>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter active" data-category="all">All items</button>
+        <button class="filter" data-category="tops">Tops</button>
+        <button class="filter" data-category="outerwear">Outerwear</button>
+        <button class="filter" data-category="accessories">Accessories</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="statement" id="about">
+      <p class="eyebrow">LESS, BUT BETTER.</p>
+      <h2>Style is personal.<br><em>Make it yours.</em></h2>
+      <p>
+        N2E Studio menghadirkan pilihan fashion modern
+        dengan desain minimalis untuk menemani aktivitasmu.
+      </p>
+      <a href="#collection" class="button button-light">Discover More ↗</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#home" class="logo">N2E<span>.</span></a>
+    <p>Modern essentials. Made for your everyday.</p>
+    <span>© 2026 N2E Studio — Portfolio Demo</span>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" hidden>
+    <button class="overlay-backdrop" id="closeBackdrop"
+      aria-label="Tutup keranjang"></button>
+
+    <aside class="cart-panel" aria-label="Keranjang belanja">
+      <div class="cart-heading">
+        <h2>Your bag <span id="cartTitleCount">(0)</span></h2>
+        <button id="closeCart" class="close-button" aria-label="Tutup">×</button>
+      </div>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-summary">
+        <div class="subtotal">
+          <span>Subtotal</span>
+          <strong id="cartSubtotal">Rp0</strong>
+        </div>
+        <p>Biaya pengiriman dihitung saat checkout.</p>
+        <button id="checkoutButton" class="button button-dark full-width">
+          Continue to checkout ↗
+        </button>
+        <p class="demo-notice">Demo portofolio — checkout tidak memproses pembayaran sungguhan.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

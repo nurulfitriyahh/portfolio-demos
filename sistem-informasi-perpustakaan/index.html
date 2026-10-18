@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libra — Sistem Informasi Perpustakaan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#dashboard"><span>▤</span> libra<span class="dot">.</span></a>
+
+    <p class="menu-label">MENU UTAMA</p>
+    <a class="nav-link active" href="#dashboard">⌂ <span>Dashboard</span></a>
+    <a class="nav-link" href="#koleksi">▤ <span>Koleksi Buku</span></a>
+    <a class="nav-link" href="#peminjaman">↗ <span>Peminjaman</span></a>
+    <a class="nav-link" href="#anggota">♙ <span>Data Anggota</span></a>
+
+    <div class="sidebar-note">
+      <div class="note-icon">✦</div>
+      <strong>Ruang untuk bertumbuh.</strong>
+      <p>Temukan pengetahuan baru dari setiap halaman.</p>
+    </div>
+
+    <div class="user-profile">
+      <div class="avatar">IF</div>
+      <div><strong>Admin Perpus</strong><small>Administrator</small></div>
+    </div>
+  </aside>
+
+  <main class="main" id="dashboard">
+    <header class="topbar">
+      <div class="heading-left">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <div>
+          <p class="breadcrumb">Perpustakaan / Dashboard</p>
+          <h1>Dashboard</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="today" id="today"></span>
+        <button class="admin-badge">IF</button>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">PUSAT LITERASI DIGITAL</p>
+        <h2>Selamat datang di Libra.</h2>
+        <p>Kelola koleksi dan pantau aktivitas perpustakaan dalam satu tempat.</p>
+      </div>
+      <div class="welcome-art"><span>LIB</span><small>READ · LEARN · GROW</small></div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <div class="stat-label"><span>Total Koleksi Buku</span><b class="stat-icon green">▤</b></div>
+        <h3 id="total-books">1.250</h3>
+        <p>Judul dalam katalog</p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-label"><span>Buku Dipinjam</span><b class="stat-icon orange">↗</b></div>
+        <h3 id="borrowed-books">86</h3>
+        <p>Sedang dalam peminjaman</p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-label"><span>Total Anggota</span><b class="stat-icon blue">♙</b></div>
+        <h3 id="total-members">324</h3>
+        <p>Anggota terdaftar</p>
+      </article>
+      <article class="stat-card">
+        <div class="stat-label"><span>Terlambat</span><b class="stat-icon red">!</b></div>
+        <h3 id="late-books">4</h3>
+        <p>Perlu tindak lanjut</p>
+      </article>
+    </section>
+
+    <section class="catalog-section" id="koleksi">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">JELAJAHI PENGETAHUAN</p>
+          <h2>Koleksi Buku</h2>
+          <p class="muted">Cari dan kelola buku yang tersedia di perpustakaan.</p>
+        </div>
+        <button class="primary-btn" onclick="tambahBuku()">+ Tambah Buku</button>
+      </div>
+
+      <div class="filters">
+        <input id="search" type="search" placeholder="Cari judul atau penulis..." aria-label="Cari buku">
+        <select id="category" aria-label="Filter kategori">
+          <option value="Semua">Semua Kategori</option>
+          <option value="Teknologi">Teknologi</option>
+          <option value="Bisnis">Bisnis</option>
+          <option value="Novel">Novel</option>
+          <option value="Pendidikan">Pendidikan</option>
+        </select>
+        <select id="availability" aria-label="Filter ketersediaan">
+          <option value="Semua">Semua Status</option>
+          <option value="Tersedia">Tersedia</option>
+          <option value="Dipinjam">Dipinjam</option>
+        </select>
+      </div>
+
+      <div class="catalog-meta">
+        <span id="result-count">Menampilkan 8 buku</span>
+        <span>Data katalog demo</span>
+      </div>
+
+      <div class="book-grid" id="book-grid"></div>
+      <p class="empty" id="empty" hidden>Buku tidak ditemukan. Coba kata kunci lain.</p>
+    </section>
+
+    <section class="panel" id="peminjaman">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">AKTIVITAS TERKINI</p>
+          <h2>Riwayat Peminjaman</h2>
+          <p class="muted">Daftar transaksi peminjaman dalam simulasi.</p>
+        </div>
+        <button class="outline-btn" onclick="exportPeminjaman()">↓ Ekspor CSV</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>PEMINJAM</th>
+              <th>JUDUL BUKU</th>
+              <th>TANGGAL PINJAM</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="loan-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="member-section" id="anggota">
+      <div>
+        <p class="eyebrow">KOMUNITAS LITERASI</p>
+        <h2>Perpustakaan untuk semua.</h2>
+        <p>Contoh antarmuka pengelolaan koleksi dan peminjaman buku secara digital.</p>
+      </div>
+      <div class="member-number"><strong id="member-highlight">324</strong><span>anggota terdaftar</span></div>
+    </section>
+
+    <footer>© 2026 Libra Library System · Demo Portofolio</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
